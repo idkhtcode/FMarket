@@ -1,5 +1,6 @@
 package com.leaf.collegeidleapp.bean;
 
+import java.sql.Timestamp;
 import java.util.Arrays;
 
 /**
@@ -11,19 +12,25 @@ public class Commodity {
     //编号
     private Integer id;
     //标题
-    private String title;
-    //类别
-    private String category;
-    //价格
-    private String price;
-    //联系方式
-    private String phone;
-    //商品描述
-    private String description;
-    //商品图片,以二进制字节存储
-    private byte[] picture;
-    //用户学号
-    private String username;
+    private String name;
+
+    private String remark;
+    private double price;
+    private String semester;
+    private String sortByMajor;
+    private String goodsType;
+    private Integer uid;//发布人的id
+    private String pic;
+    private Timestamp releaseTime;
+    private String state;
+    private String degree;
+
+    //交易相关的新元素
+    private Integer bid; //买家id
+    private Timestamp buyTime; //交易时间
+    private String address; //交易地点
+    private String contact; // 联系地址
+    private Integer rate; // 评分
 
     public Integer getId() {
         return id;
@@ -33,73 +40,131 @@ public class Commodity {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCategory() {
-        return category;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getSemester() {
+        return semester;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setSemester(String semester) {
+        this.semester = semester;
     }
 
-    public String getDescription() {
-        return description;
+    public String getSortByMajor() {
+        return sortByMajor;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSortByMajor(String sortByMajor) {
+        this.sortByMajor = sortByMajor;
     }
 
-    public byte[] getPicture() {
-        return picture;
+    public String getGoodsType() {
+        return goodsType;
     }
 
-    public void setPicture(byte[] picture) {
-        this.picture = picture;
+    public void setGoodsType(String goodsType) {
+        this.goodsType = goodsType;
     }
 
-    public String getUsername() {
-        return username;
+    public Integer getUid() {
+        return uid;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
-    @Override
-    public String toString() {
-        return "Commodity{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", category='" + category + '\'' +
-                ", price='" + price + '\'' +
-                ", phone='" + phone + '\'' +
-                ", description='" + description + '\'' +
-                ", picture=" + Arrays.toString(picture) +
-                ", username='" + username + '\'' +
-                '}';
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
+
+    public Timestamp getReleaseTime() {
+        return releaseTime;
+    }
+
+    public void setReleaseTime(Timestamp releaseTime) {
+        this.releaseTime = releaseTime;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
+    }
+
+    public Integer getBid() {
+        return bid;
+    }
+
+    public void setBid(Integer bid) {
+        this.bid = bid;
+    }
+
+    public Timestamp getBuyTime() {
+        return buyTime;
+    }
+
+    public void setBuyTime(Timestamp buyTime) {
+        this.buyTime = buyTime;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public Integer getRate() {
+        return rate;
+    }
+
+    public void setRate(Integer rate) {
+        this.rate = rate;
     }
 }

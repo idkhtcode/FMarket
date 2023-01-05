@@ -83,13 +83,13 @@ public class MyCommodityAdapter extends BaseAdapter {
             tvPrice = itemView.findViewById(R.id.tv_price);
             tvDescription = itemView.findViewById(R.id.tv_description);
             ivCommodity = itemView.findViewById(R.id.iv_commodity);
-            tvTitle.setText(commodity.getTitle());
-            tvDescription.setText(commodity.getDescription());
+            tvTitle.setText(commodity.getName());
+            tvDescription.setText(commodity.getRemark());
             tvPrice.setText(String.valueOf(commodity.getPrice())+"元");
-            tvType.setText(commodity.getCategory());
-            byte[] picture = commodity.getPicture();
-            Bitmap img = BitmapFactory.decodeByteArray(picture,0,picture.length);
-            ivCommodity.setImageBitmap(img);
+            tvType.setText(commodity.getGoodsType());
+//            byte[] picture = commodity.getPicture();
+//            Bitmap img = BitmapFactory.decodeByteArray(picture,0,picture.length);
+//            ivCommodity.setImageBitmap(img);
         }
     }
 }

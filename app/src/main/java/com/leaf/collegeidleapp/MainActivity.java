@@ -102,11 +102,11 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println(position);
                 Bundle bundle1 = new Bundle();
                 bundle1.putInt("position",position);
-                bundle1.putByteArray("picture",commodity.getPicture());
-                bundle1.putString("title",commodity.getTitle());
-                bundle1.putString("description",commodity.getDescription());
-                bundle1.putString("price",commodity.getPrice());
-                bundle1.putString("phone",commodity.getPhone());
+//                bundle1.putByteArray("picture",commodity.getPicture());
+                bundle1.putString("name",commodity.getName());
+                bundle1.putString("remark",commodity.getRemark());
+                bundle1.putDouble("price",commodity.getPrice());
+                bundle1.putString("phone",commodity.getContact());
                 bundle1.putString("username",stuNum);
                 bundle1.putInt("id",commodity.getId());
 
@@ -148,10 +148,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 OkHttpClient client = new OkHttpClient();
-                Request request = new Request.Builder().url("http://100.2.145.64:8001/show").build();
+                Request request = new Request.Builder().url("http://192.168.1.126:8081/getGoods").build();
                 try {
                     Response response = client.newCall(request).execute();
                     String s = response.body().string();
+//                    System.out.println(s);
                     commodityList=transJson.ttransJSON(s);
                 } catch (Exception e) {
                     e.printStackTrace();

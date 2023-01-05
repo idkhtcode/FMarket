@@ -58,11 +58,11 @@ public class ReviewCommodityActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         if( b != null) {
             picture = b.getByteArray("picture");
-            Bitmap img = BitmapFactory.decodeByteArray(picture, 0, picture.length);
-            ivCommodity.setImageBitmap(img);
-            title.setText(b.getString("title"));
-            description.setText(b.getString("description"));
-            price.setText((b.getString("price"))+"元");
+//            Bitmap img = BitmapFactory.decodeByteArray(picture, 0, picture.length);
+//            ivCommodity.setImageBitmap(img);
+            title.setText(b.getString("name"));
+            description.setText(b.getString("remark"));
+            price.setText((b.getDouble("price"))+"元");
             phone.setText(b.getString("phone"));
             position = b.getInt("position");
             id=b.getInt("id");

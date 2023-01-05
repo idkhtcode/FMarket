@@ -107,15 +107,7 @@ public class AddCommodityActivity extends AppCompatActivity {
                         public void run() {
                             try {
                                 String url="http://100.2.145.64:8001/uploadAudio";
-                                try {
-                                    uploadImage(url,ImagePath);
-                                } catch (IOException e) {
-                                    Looper.prepare();
-                                    e.printStackTrace();
-                                    Looper.loop();
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
+                                //                                    uploadImage(url,ImagePath);
                                 //创建信息对象
                                 Message message = Message.obtain();
                                 Bundle bundle = new Bundle();
@@ -124,18 +116,18 @@ public class AddCommodityActivity extends AppCompatActivity {
                                 addTrackHandler.sendMessage(message);
 
                                 RequestBody formBody = new FormBody.Builder()
-                                        .add("title", etTitle.getText().toString())
-                                        .add("category", spType.getSelectedItem().toString())
+                                        .add("name", etTitle.getText().toString())
+                                        .add("goodsType", spType.getSelectedItem().toString())
                                         .add("price", etPrice.getText().toString())
-                                        .add("phone", etPhone.getText().toString())
-                                        .add("description", etDescription.getText().toString())
+                                        .add("contact", etPhone.getText().toString())
+                                        .add("remark", etDescription.getText().toString())
                                         .add("username", tvStuId.getText().toString())
                                         .build();
                                 OkHttpClient client = new OkHttpClient();
 
                                 //发送账号信息
                                 Request request = new Request.Builder()
-                                        .url("http://100.2.145.64:8001/upload")
+                                        .url("http://192.168.1.126:8081/release")
                                         .post(formBody)
                                         .build();
                                 Response response = null;
@@ -144,7 +136,7 @@ public class AddCommodityActivity extends AppCompatActivity {
 //                            int res = Integer.valueOf(s);
                                 System.out.println(s);
                                 Log.d(s, "获取返回值");
-                                if (s.equals("1")) {
+                                if (s.equals("success")) {
 
                                     Intent intent = new Intent();
                                     intent.setClass(AddCommodityActivity.this, MainActivity.class);
