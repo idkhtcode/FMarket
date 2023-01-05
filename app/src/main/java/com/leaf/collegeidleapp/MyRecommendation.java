@@ -79,7 +79,7 @@ public class MyRecommendation extends AppCompatActivity {
                             .build();
                     Response response = client.newCall(request).execute();
                     String s = response.body().string();
-
+                    System.out.println("s = " + s);
                     commodities=transJson.ttransJSON(s);
 
                     adapter.setData(commodities);
@@ -96,8 +96,31 @@ public class MyRecommendation extends AppCompatActivity {
         tvRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                adapter.setData(commodities);
-                lvMyCommodity.setAdapter(adapter);
+                new Thread(){
+                    @Override
+                    public void run() {
+                        try {
+                            RequestBody formBody = new FormBody.Builder()
+                                    .add("username", username)
+                                    .build();
+                            OkHttpClient client = new OkHttpClient();
+                            Request request = new Request.Builder()
+                                    .url("http://192.168.1.126:8081/bookRecommend")
+                                    .post(formBody)
+                                    .build();
+                            Response response = client.newCall(request).execute();
+                            String s = response.body().string();
+                            System.out.println("s = " + s);
+                            commodities=transJson.ttransJSON(s);
+
+                            adapter.setData(commodities);
+
+                            lvMyCommodity.setAdapter(adapter);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }.start();
             }
         });
     }
@@ -107,6 +130,7 @@ public class MyRecommendation extends AppCompatActivity {
             public void run() {
                 String year = null;
                 try {
+                    System.out.println("username is = " + username);
                     RequestBody formBody = new FormBody.Builder()
                             .add("username", username)
                             .build();
@@ -117,7 +141,6 @@ public class MyRecommendation extends AppCompatActivity {
                             .build();
                     Response response = client.newCall(request).execute();
                     String s = response.body().string();
-                    System.out.println("s = " + s);
                     list=studentTrans.StudentTrans("["+s+"]");
 //                    User user1 = JSON.parseObject(s, User.class);
                     if(list != null) {
