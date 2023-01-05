@@ -27,7 +27,7 @@ import okhttp3.Response;
  */
 public class ModifyInfoActivity extends AppCompatActivity {
 
-    EditText etStuName,etMajor,etPhone,etQq,etAddress;
+    EditText etStuName,etMajor,etEmail,etYear;
     LinkedList<User> list =new LinkedList<>();
     StudentTrans studentTrans =new StudentTrans();
 
@@ -48,9 +48,10 @@ public class ModifyInfoActivity extends AppCompatActivity {
         tvStuNumber.setText(this.getIntent().getStringExtra("stu_number2"));
         etStuName = findViewById(R.id.et_stu_name);
         etMajor = findViewById(R.id.et_stu_major);
-        etPhone = findViewById(R.id.et_stu_phone);
-        etQq = findViewById(R.id.et_stu_qq);
-        etAddress = findViewById(R.id.et_stu_address);
+//        etYear = findViewById(R.id.tv_stu_year);
+//        et = findViewById(R.id.et_stu_phone);
+        etEmail = findViewById(R.id.et_stu_qq);
+//        etAddress = findViewById(R.id.et_stu_address);
 
         String username = tvStuNumber.getText().toString();
         new Thread(){
@@ -71,11 +72,11 @@ public class ModifyInfoActivity extends AppCompatActivity {
                     System.out.println(list);
                     if(list != null) {
                         for(User user : list) {
-                            etStuName.setText(user.getName());
+                            etStuName.setText(user.getUsername());
                             etMajor.setText(user.getMajor());
-                            etPhone.setText(user.getPhone());
-                            etQq.setText(user.getQq());
-                            etAddress.setText(user.getAddress());
+//                            etPhone.setText(user.getPhone());
+//                            etQq.setText(user.getQq());
+//                            etAddress.setText(user.getAddress());
                         }
                     }
                 } catch (Exception e) {
@@ -94,9 +95,9 @@ public class ModifyInfoActivity extends AppCompatActivity {
                     String username = tvStuNumber.getText().toString();
                     String name = etStuName.getText().toString();
                     String major = etMajor.getText().toString();
-                    String phone = etPhone.getText().toString();
-                    String qq = etQq.getText().toString();
-                    String address = etAddress.getText().toString();
+//                    String phone = etPhone.getText().toString();
+//                    String qq = etQq.getText().toString();
+//                    String address = etAddress.getText().toString();
 
                     new Thread(){
                         @Override
@@ -106,9 +107,9 @@ public class ModifyInfoActivity extends AppCompatActivity {
                                         .add("username", username)
                                         .add("name",name)
                                         .add("major",major)
-                                        .add("phone",phone)
-                                        .add("qq",qq)
-                                        .add("address",address)
+//                                        .add("phone",phone)
+//                                        .add("qq",qq)
+//                                        .add("address",address)
                                         .build();
                                 OkHttpClient client = new OkHttpClient();
                                 Request request = new Request.Builder()
@@ -133,9 +134,9 @@ public class ModifyInfoActivity extends AppCompatActivity {
     public boolean CheckInput() {
         String StuName = etStuName.getText().toString();
         String StuMajor = etMajor.getText().toString();
-        String StuPhone = etPhone.getText().toString();
-        String StuQq = etQq.getText().toString();
-        String StuAddress = etAddress.getText().toString();
+//        String StuPhone = etPhone.getText().toString();
+//        String StuQq = etQq.getText().toString();
+//        String StuAddress = etAddress.getText().toString();
         if(StuName.trim().equals("")) {
             Toast.makeText(this,"姓名不能为空!",Toast.LENGTH_SHORT).show();
             return false;
@@ -144,18 +145,18 @@ public class ModifyInfoActivity extends AppCompatActivity {
             Toast.makeText(this,"专业不能为空!",Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(StuPhone.trim().equals("")) {
-            Toast.makeText(this,"联系方式不能为空!",Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        if(StuQq.trim().equals("")) {
-            Toast.makeText(this,"QQ号不能为空!",Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        if(StuAddress.trim().equals("")) {
-            Toast.makeText(this,"地址不能为空!",Toast.LENGTH_SHORT).show();
-            return false;
-        }
+//        if(StuPhone.trim().equals("")) {
+//            Toast.makeText(this,"联系方式不能为空!",Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        if(StuQq.trim().equals("")) {
+//            Toast.makeText(this,"QQ号不能为空!",Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        if(StuAddress.trim().equals("")) {
+//            Toast.makeText(this,"地址不能为空!",Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
         return true;
     }
 }

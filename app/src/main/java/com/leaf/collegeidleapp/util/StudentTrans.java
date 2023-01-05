@@ -27,22 +27,18 @@ public class StudentTrans {
             JSONObject object = (JSONObject) objects.get(i);
             User user=new User();
 
-            Integer username=object.getInteger("username");
+            String username=object.getString("username");
             String password = object.getString("password");
-            String name = object.getString("name");
+//            String name = object.getString("name");
             String major= object.getString("major");
-            String phone= object.getString("phone");
-            String qq= object.getString("qq");
-            String address= object.getString("address");
+            String year = object.getString("year");
+            String email= object.getString("email");
 
-            user.setUsername(username);
+            user.setUsername(String.valueOf(username));
             user.setPassword(password);
-            user.setName(name);
             user.setMajor(major);
-            user.setPhone(phone);
-            user.setQq(qq);
-            user.setAddress(address);
-
+           user.setYear(year);
+           user.setEmail(email);
             list.add(user);
         }
         return list;

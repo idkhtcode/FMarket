@@ -28,7 +28,7 @@ import okhttp3.Response;
  */
 public class MyInfoActivity extends AppCompatActivity {
 
-    TextView tvStuName,tvStuMajor,tvStuPhone,tvStuQq,tvStuAddress;
+    TextView tvStuName,tvStuMajor,tvStuPhone,tvStuEmail,tvStuAddress,tvStuYear;
     String username;
     LinkedList<User> list = new LinkedList<>();
     StudentTrans studentTrans=new StudentTrans();
@@ -52,9 +52,9 @@ public class MyInfoActivity extends AppCompatActivity {
         tvStuName = findViewById(R.id.tv_stu_name);
         tvStuMajor = findViewById(R.id.tv_stu_major);
         tvStuPhone = findViewById(R.id.tv_stu_phone);
-        tvStuQq = findViewById(R.id.tv_stu_qq);
+        tvStuEmail = findViewById(R.id.tv_stu_email);
         tvStuAddress = findViewById(R.id.tv_stu_address);
-
+        tvStuYear = findViewById(R.id.tv_stu_year);
         OkHttpGet();
 
         Button btnModifyInfo = findViewById(R.id.btn_modify_info);
@@ -91,27 +91,28 @@ public class MyInfoActivity extends AppCompatActivity {
                             .build();
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://100.2.145.64:8001/myuser")
+                            .url("http://192.168.1.126:8081/getUser")
                             .post(formBody)
                             .build();
                     Response response = client.newCall(request).execute();
                     String s = response.body().string();
-
+                    System.out.println("s = " + s);
                     list=studentTrans.StudentTrans("["+s+"]");
 //                    User user1 = JSON.parseObject(s, User.class);
                     if(list != null) {
                         for(User user : list) {
-                            tvStuName.setText(user.getName());
+                            tvStuName.setText(user.getUsername());
                             tvStuMajor.setText(user.getMajor());
-                            tvStuPhone.setText(user.getPhone());
-                            tvStuQq.setText(user.getQq());
-                            tvStuAddress.setText(user.getAddress());
+                            tvStuYear.setText(user.getYear());
+//                            tvStuPhone.setText(user.get);
+                            tvStuEmail.setText(user.getEmail());
+//                            tvStuAddress.setText(user.getAddress());
                         }
                     }else {
                         tvStuName.setText("暂未填写");
                         tvStuMajor.setText("暂未填写");
                         tvStuPhone.setText("暂未填写");
-                        tvStuQq.setText("暂未填写");
+                        tvStuEmail.setText("暂未填写");
                         tvStuAddress.setText("暂未填写");
                     }
                 } catch (Exception e) {

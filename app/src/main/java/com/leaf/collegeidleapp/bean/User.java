@@ -1,24 +1,40 @@
 package com.leaf.collegeidleapp.bean;
 
+import java.sql.Timestamp;
+
 /**
  * 学生实体类
  * @author : autumn_leaf
  */
 public class User {
 
-    private Integer username;
+    private Integer id;
+    private String username;
     private String password;
-    private String name;
+    private String email;
     private String major;
-    private String phone;
-    private String qq;
-    private String address;
+    private String year;
+    private Timestamp registerTime;
+    private Integer goodsBought;
+    private Integer goodsSold;
+    private Integer requestPublishedFinished;
+    private Integer requestTakenFinished;
+    private Integer rateGoods;
+    private Integer rateRequest;
 
-    public Integer getUsername() {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(Integer username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -30,12 +46,12 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getEmail() {
+        return email;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getMajor() {
@@ -46,40 +62,67 @@ public class User {
         this.major = major;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getYear() {
+        return year;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setYear(String year) {
+        this.year = year;
     }
 
-    public String getQq() {
-        return qq;
+    public Timestamp getRegisterTime() {
+        return registerTime;
     }
 
-    public void setQq(String qq) {
-        this.qq = qq;
+    public void setRegisterTime(Timestamp registerTime) {
+        this.registerTime = registerTime;
     }
 
-    public String getAddress() {
-        return address;
+    public Integer getGoodsBought() {
+        return goodsBought;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setGoodsBought(Integer goodsBought) {
+        this.goodsBought = goodsBought;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", major='" + major + '\'' +
-                ", phone='" + phone + '\'' +
-                ", qq='" + qq + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+    public Integer getGoodsSold() {
+        return goodsSold;
+    }
+
+    public void setGoodsSold(Integer goodsSold) {
+        this.goodsSold = goodsSold;
+    }
+
+    public Integer getRequestPublishedFinished() {
+        return requestPublishedFinished;
+    }
+
+    public void setRequestPublishedFinished(Integer requestPublishedFinished) {
+        this.requestPublishedFinished = requestPublishedFinished;
+    }
+
+    public Integer getRequestTakenFinished() {
+        return requestTakenFinished;
+    }
+
+    public void setRequestTakenFinished(Integer requestTakenFinished) {
+        this.requestTakenFinished = requestTakenFinished;
+    }
+
+    public Integer getRateGoods() {
+        return rateGoods;
+    }
+
+    public void setRateGoods(Integer rateGoods) {
+        this.rateGoods = rateGoods;
+    }
+
+    public Integer getRateRequest() {
+        return rateRequest;
+    }
+
+    public void setRateRequest(Integer rateRequest) {
+        this.rateRequest = rateRequest;
     }
 }
