@@ -58,6 +58,20 @@ public class PersonalCenterActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //系统推荐
+        Button btnRecommendation = findViewById(R.id.btn_my_recommendation);
+        btnRecommendation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),MyRecommendation.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("stu_id",TvStuNumber.getText().toString());
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
+
         //点击查看我的收藏按钮
         Button btnMyCollection = findViewById(R.id.btn_my_collection);
         btnMyCollection.setOnClickListener(new View.OnClickListener() {
