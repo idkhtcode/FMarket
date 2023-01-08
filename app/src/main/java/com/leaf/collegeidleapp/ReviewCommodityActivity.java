@@ -147,18 +147,18 @@ public class ReviewCommodityActivity extends AppCompatActivity {
                             try {
                                 RequestBody formBody = new FormBody.Builder()
                                         .add("username", username)
-                                        .add("currentTime",simpleDateFormat.format(date))
                                         .add("content",etComment.getText().toString())
                                         .add("id",String.valueOf(id))
                                         .build();
                                 OkHttpClient client = new OkHttpClient();
                                 Request request = new Request.Builder()
-                                        .url("http://100.2.145.64:8001/getReview")
+                                        .url("http://192.168.1.126:8081/addGoodComment")
                                         .post(formBody)
                                         .build();
                                 Response response = client.newCall(request).execute();
                                 String s = response.body().string();
-                                if (s.equals("1")) {
+                                System.out.println("s = " + s);
+                                if (s.equals("Success")) {
                                     runOnUiThread(new Runnable()
                                     {
                                         @Override
@@ -166,15 +166,6 @@ public class ReviewCommodityActivity extends AppCompatActivity {
                                         {
                                             etComment.setText("");
                                             Toast.makeText(getApplicationContext(),"评论成功!",Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                                }else {
-                                    runOnUiThread(new Runnable()
-                                    {
-                                        @Override
-                                        public void run()
-                                        {
-                                            Toast.makeText(getApplicationContext(),"评论失败!",Toast.LENGTH_SHORT).show();
                                         }
                                     });
                                 }
@@ -188,36 +179,10 @@ public class ReviewCommodityActivity extends AppCompatActivity {
         });
 
 
-        final ReviewAdapter adapter = new ReviewAdapter(getApplicationContext());
+        ReviewAdapter adapter = new ReviewAdapter(getApplicationContext());
 
 
-        new Thread(){
-            @Override
-            public void run() {
-                try {
-                    RequestBody formBody = new FormBody.Builder()
-                            .add("id",String.valueOf(id))
-                            .build();
-                    OkHttpClient client = new OkHttpClient();
-                    Request request = new Request.Builder()
-                            .url("http://100.2.145.64:8001/reviewShow")
-                            .post(formBody)
-                            .build();
-                    Response response = client.newCall(request).execute();
-                    String s = response.body().string();
-
-                    list=readReviews.ReviewTrans(s);
-                    //添加位置
-                    for(Review review:list){
-                        review.setPosition(position);
-                    }
-                    adapter.setData(list);
-                    lvReview.setAdapter(adapter);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }.start();
+        getGoodsComment(id,adapter);
 
         //刷新页面
         TextView tvRefresh = findViewById(R.id.tv_refresh);
@@ -233,7 +198,7 @@ public class ReviewCommodityActivity extends AppCompatActivity {
                                     .build();
                             OkHttpClient client = new OkHttpClient();
                             Request request = new Request.Builder()
-                                    .url("http://100.2.145.64:8001/reviewShow")
+                                    .url("http://192.168.1.126:8081/getGoodComment")
                                     .post(formBody)
                                     .build();
                             Response response = client.newCall(request).execute();
@@ -254,6 +219,36 @@ public class ReviewCommodityActivity extends AppCompatActivity {
             }
         });
     }
+    public void getGoodsComment(Integer goodsId,ReviewAdapter adapter){
+        new Thread(){
+            @Override
+            public void run() {
+                try {
+                    RequestBody formBody = new FormBody.Builder()
+                            .add("id",String.valueOf(id))
+                            .build();
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder()
+                            .url("http://192.168.1.126:8081/getBookComments")
+                            .post(formBody)
+                            .build();
+                    Response response = client.newCall(request).execute();
+                    String s = response.body().string();
+
+                    list=readReviews.ReviewTrans(s);
+                    //添加位置
+                    for(Review review:list){
+                        review.setPosition(position);
+                    }
+                    adapter.setData(list);
+                    lvReview.setAdapter(adapter);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
+
 
     /**
      * 检查输入评论是否为空

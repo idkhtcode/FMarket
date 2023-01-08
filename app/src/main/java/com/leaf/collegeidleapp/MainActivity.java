@@ -1,12 +1,10 @@
 package com.leaf.collegeidleapp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     AllCommodityAdapter adapter;
     List<Commodity> commodityList = new ArrayList<>();
     TransJson transJson=new TransJson();
+    EditText search;
+    Button searchBtn;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -116,29 +116,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //点击不同的类别,显示不同的商品信息
-        ibLearning = findViewById(R.id.ib_learning_use);
-        ibElectronic = findViewById(R.id.ib_electric_product);
+//        ibLearning = findViewById(R.id.ib_learning_use);
+//        ibElectronic = findViewById(R.id.ib_electric_product);
+
+        search = findViewById(R.id.et_search);
+        searchBtn = findViewById(R.id.button2);
         final Bundle bundle2 = new Bundle();
         //发布
-        ibLearning.setOnClickListener(new View.OnClickListener() {
+        searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bundle2.putInt("status",1);
+                System.out.println("********************************");
+                String searchContent = String.valueOf(search.getText());
+                bundle2.putString("searchContent",searchContent);
                 Intent intent = new Intent(MainActivity.this,CommodityTypeActivity.class);
                 intent.putExtras(bundle2);
                 startActivity(intent);
             }
         });
         //需求
-        ibElectronic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bundle2.putInt("status",2);
-                Intent intent = new Intent(MainActivity.this,CommodityTypeActivity.class);
-                intent.putExtras(bundle2);
-                startActivity(intent);
-            }
-        });
+//        ibElectronic.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                bundle2.putInt("status",2);
+//                Intent intent = new Intent(MainActivity.this,CommodityTypeActivity.class);
+//                intent.putExtras(bundle2);
+//                startActivity(intent);
+//            }
+//        });
     }
 
 

@@ -32,52 +32,37 @@
         android:gravity="center_horizontal"
         android:textStyle="italic" />
 
-    <ImageButton
-        android:id="@+id/ib_learning_use"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_below="@+id/tv_student_number"
-        android:layout_marginStart="115dp"
-        android:background="@color/colorWhite"
-        android:scaleType="centerCrop"
-        android:src="@drawable/buy" />
 
-    <ImageButton
-        android:id="@+id/ib_electric_product"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_below="@+id/tv_student_number"
-        android:layout_marginStart="220dp"
-        android:background="@color/colorWhite"
-        android:scaleType="centerCrop"
-        android:src="@drawable/sale" />
+    <EditText
+            android:id="@+id/et_search"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginTop="25dp"
+            android:drawablePadding="8dp"
+            android:hint="搜索"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/colorBlue"
+            android:textSize="25sp"/>
+    <Button
+            android:text="搜索"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginStart="330dp"
+            android:layout_marginTop="80dp"
+            android:id="@+id/button2"/>
 
-    <TextView
-        android:id="@+id/tv_learning_use"
-        android:layout_width="80dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/ib_learning_use"
-        android:layout_marginStart="115dp"
-        android:text="发布闲置"
-        android:textSize="18sp"
-        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tv_electric_product"
-        android:layout_width="80dp"
-        android:layout_height="25dp"
-        android:layout_below="@+id/ib_electric_product"
-        android:layout_marginStart="220dp"
-        android:text="求购二手"
-        android:textSize="18sp"
-        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/lv_all_commodity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/view2"
-        android:layout_below="@+id/tv_electric_product"
+        android:layout_below="@+id/et_search"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="16dp" />
 
@@ -158,4 +143,5 @@
         android:layout_height="2dp"
         android:background="@color/colorBlack"
         android:layout_alignParentBottom="true"/>
+
 </RelativeLayout>

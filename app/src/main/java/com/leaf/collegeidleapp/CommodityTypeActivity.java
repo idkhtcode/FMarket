@@ -53,11 +53,8 @@ public class CommodityTypeActivity extends AppCompatActivity {
         adapter = new AllCommodityAdapter(getApplicationContext());
         //根据不同的状态显示不同的界面
         int status = this.getIntent().getIntExtra("status",0);
-        if(status == 1) {
-            tvCommodityType.setText("发布闲置");
-        }else if(status == 2) {
-            tvCommodityType.setText("求购二手");
-        }
+        String searchContent = this.getIntent().getStringExtra("searchContent");
+        tvCommodityType.setText(searchContent);
         //根据不同类别显示不同的商品信息
         type=tvCommodityType.getText().toString();
         OkHttpGet();
@@ -71,11 +68,12 @@ public class CommodityTypeActivity extends AppCompatActivity {
             public void run() {
                 try {
                     RequestBody formBody = new FormBody.Builder()
-                        .add("category", type)
+                        .add("name", type)
                         .build();
+                    System.out.println("type = " + type);
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                        .url("http://100.2.145.64:8001/showtype")
+                        .url("http://192.168.1.126:8081/search")
                         .post(formBody)
                         .build();
                     Response response = client.newCall(request).execute();
