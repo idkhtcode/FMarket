@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="这只娃娃很可爱的!"
-            android:textColor="@color/colorGreen"
+            android:textColor="@color/colorPrimary"
             android:textSize="18sp"
             android:layout_marginTop="6dp"/>
         <LinearLayout

@@ -91,7 +91,7 @@ public class MyInfoActivity extends AppCompatActivity {
                             .build();
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://192.168.1.126:8081/getUser")
+                            .url("http://10.0.2.2:8081/getUser")
                             .post(formBody)
                             .build();
                     Response response = client.newCall(request).execute();

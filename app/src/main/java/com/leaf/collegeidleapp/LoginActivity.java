@@ -48,8 +48,8 @@ public class LoginActivity extends AppCompatActivity {
 
         EtStuNumber = findViewById(R.id.et_username);
         EtStuPwd = findViewById(R.id.et_password);
-        EtStuNumber.setText("0087");
-        EtStuPwd.setText("0087");
+        EtStuNumber.setText("87");
+        EtStuPwd.setText("87");
         System.out.println(EtStuNumber.getText());
         Button btnLogin = findViewById(R.id.btn_login);
         //点击登录
@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         //发送账号信息
                             Request request = new Request.Builder()
-                                    .url("http://192.168.1.126:8081/login")
+                                    .url("http://10.0.2.2:8081/login")
                                     .post(formBody)
                                     .build();
                         Response response = null;
@@ -102,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                                 //接收学生信息数据
 //                                OkHttpClient okHttpClient = new OkHttpClient();
 //                                final Request request2 = new Request.Builder()
-//                                        .url("http://192.168.1.126:8081/getGoods")
+//                                        .url("http://10.0.2.2:8081/getGoods")
 //                                        .get()
 //                                        .build();
 //                                Call call = okHttpClient.newCall(request2);

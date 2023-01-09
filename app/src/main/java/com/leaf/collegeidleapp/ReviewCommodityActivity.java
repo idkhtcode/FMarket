@@ -152,7 +152,7 @@ public class ReviewCommodityActivity extends AppCompatActivity {
                                         .build();
                                 OkHttpClient client = new OkHttpClient();
                                 Request request = new Request.Builder()
-                                        .url("http://192.168.1.126:8081/addGoodComment")
+                                        .url("http://10.0.2.2:8081/addGoodComment")
                                         .post(formBody)
                                         .build();
                                 Response response = client.newCall(request).execute();
@@ -198,7 +198,7 @@ public class ReviewCommodityActivity extends AppCompatActivity {
                                     .build();
                             OkHttpClient client = new OkHttpClient();
                             Request request = new Request.Builder()
-                                    .url("http://192.168.1.126:8081/getGoodComment")
+                                    .url("http://10.0.2.2:8081/getGoodComment")
                                     .post(formBody)
                                     .build();
                             Response response = client.newCall(request).execute();
@@ -229,7 +229,7 @@ public class ReviewCommodityActivity extends AppCompatActivity {
                             .build();
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://192.168.1.126:8081/getBookComments")
+                            .url("http://10.0.2.2:8081/getBookComments")
                             .post(formBody)
                             .build();
                     Response response = client.newCall(request).execute();

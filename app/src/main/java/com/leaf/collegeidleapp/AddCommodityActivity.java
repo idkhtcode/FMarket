@@ -127,7 +127,7 @@ public class AddCommodityActivity extends AppCompatActivity {
 
                                 //发送账号信息
                                 Request request = new Request.Builder()
-                                        .url("http://192.168.1.126:8081/release")
+                                        .url("http://10.0.2.2:8081/release")
                                         .post(formBody)
                                         .build();
                                 Response response = null;

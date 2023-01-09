@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background">
+    >
     <TextView
         android:id="@+id/tv_publish_info"
         android:text="发布商品"
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:background="@color/colorGreen"/>
+        android:background="@color/colorPrimary"/>
     <TextView
         android:id="@+id/tv_student_id"
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
         android:layout_below="@id/tv_publish_info"
         android:textSize="18sp"
         android:textColor="@color/colorBlack"
-        androidlayout_marginTop="8dp"
+        android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
         android:textStyle="italic"/>
     <TextView
@@ -148,7 +148,6 @@
         android:text="发布"
         android:textSize="25sp"
         android:layout_marginTop="20dp"
-        android:background="@color/colorGreen"
         android:textColor="@color/colorWhite"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="10dp"/>
@@ -160,7 +159,6 @@
         android:text="返回"
         android:textSize="25sp"
         android:layout_marginTop="20dp"
-        android:background="@color/colorGreen"
         android:textColor="@color/colorWhite"
         android:layout_marginStart="205dp"
         android:layout_marginEnd="10dp"/>

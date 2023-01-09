@@ -11,7 +11,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="25dp"
         android:text="刷新"
-        android:textColor="@color/colorPurple"
+        android:textColor="@color/colorBlack"
         android:textSize="24sp" />
     <TextView
         android:id="@+id/tv_back"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="返回"
         android:textSize="24sp"
-        android:textColor="@color/colorPurple"
+        android:textColor="@color/colorBlack"
         android:layout_marginTop="25dp"
         android:layout_marginStart="330dp"/>
     <ImageButton
@@ -146,14 +146,15 @@
             android:textColor="@color/colorBlueDark"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"/>
+
         <Button
             android:id="@+id/btn_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="提交评论"
-            android:textSize="24sp"
+            android:layout_marginStart="230dp"
             android:background="@color/colorBlue"
-            android:layout_marginStart="20dp"/>
+            android:text="提交评论"
+            android:textSize="24sp" />
     </LinearLayout>
     <TextView
         android:id="@+id/tv_comment"
